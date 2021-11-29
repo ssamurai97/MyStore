@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { LoggerService} from "../services/logger.service";
 
 @Component({
   selector: 'store-confirmation',
@@ -7,15 +8,17 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./confirmation.component.css'],
 })
 export class ConfirmationComponent implements OnInit {
-  fullname: string = '';
+  fullName: string = '';
   total: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private logger: LoggerService) {}
 
   ngOnInit(): void {
     const { name, totalPrice } = this.cartService.getConformationDetails();
-    this.fullname =  name || ''
+    this.fullName =  name || ''
     this.total = totalPrice
+
+    this.logger.log(`confirmation for user: ${this.fullName}`)
   }
 }
 

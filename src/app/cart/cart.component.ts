@@ -42,13 +42,9 @@ export class CartComponent implements OnInit {
   }
 
   submitForm() {
-    let user = {
-      fullName: this.fullName,
-      address: this.address,
-      creditcard: this.creditcard
-    }
-    this.cartService.addUser(user);
+    this.cartService.addUser(this.userForm.value);
     this.router.navigate(['/confirmation'])
+
   }
 
   testData(){

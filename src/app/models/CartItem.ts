@@ -6,7 +6,7 @@ export type CartItem = {
 }
 
 export type User = {
-    name?: string,
+    fullName?: string,
     address?: string,
     creditcard?: number,
 

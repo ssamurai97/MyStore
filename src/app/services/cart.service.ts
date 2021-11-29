@@ -55,7 +55,7 @@ export class CartService {
 
   getConformationDetails() {
     return {
-      name: this.user.name,
+      name: this.user.fullName,
       totalPrice: this.totalPrice
     }
   }
