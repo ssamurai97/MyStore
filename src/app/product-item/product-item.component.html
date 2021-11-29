@@ -1,0 +1,41 @@
+
+    <div class="table-responsive">
+        <table class="table" *ngIf="product">
+            <thead>
+            <tr>
+                <th>
+                    <button class="btn btn-primary"
+                            (click)="toggleImage()">
+                        {{ showImage ? 'Hide' : 'Show'}} Image
+                    </button>
+                </th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr >
+                <td>
+                    <img *ngIf='showImage' [src]="product.url" [title]="product.name"
+                         [style.width.px]= 'imageWidth'
+                         [style.margin.px]='imageMargin'>
+                </td>
+                <td>
+                    <a [routerLink]="['/products', product?.id]">{{ product?.name}}</a>
+                </td>
+                <td>{{product?.price|currency:'USD':'symbol'}}</td>
+                <td>{{ product?.description}}</td>
+                <td [formGroup]="quantityForm">
+                    <select formControlName="quantity" id="quantity" (ngModelChange)="onChange(quantity)">
+                        <option *ngFor="let quantity of quantities" [ngValue]="quantity">{{quantity}}</option>
+                    </select>
+                    <button class="btn btn-outline-dark d-inline-flex m-4" (click)="addItem(product.name!, product.price!, quantity!, product.url!)">Add to cart</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+

@@ -2,6 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
 
+To use the app, download the files and **run ng serve** or **npm start** in your CLI. The app displays a list of products that a user can add to his or her cart. When clicking on the product picture a detail page of the product is displayed. When a user fills out his or her personal details on the cart page and submits the order, a confirmation page is shown.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

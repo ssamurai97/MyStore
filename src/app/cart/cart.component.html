@@ -1,0 +1,75 @@
+<div class="card-body">
+    <div class="empty-cart-message" *ngIf="cartitems.length === 0">Your cart is empty!</div>
+    <div class="cart-container">
+        <div class="cart-item-container">
+            <div *ngFor="let cartitem of cartitems" class="cart-item">
+                <img src="{{cartitem.url}}">
+                <div >
+                    <p>{{cartitem.name}}</p>
+                    <p>$ {{cartitem.price}}</p>
+                    <div class="quantity"><button class="square" (click)="addOne(cartitem.name!)">+</button>
+                    <button class="btn-outline-light" (click)="removeOne(cartitem.name!)"> delete Item</button></div>
+                </div>
+            </div>
+            <div *ngIf="totalPrice > 0" class="price">Total: {{totalPrice | currency:'USD':'symbol'}}</div>
+        </div>
+        <form *ngIf="cartitems.length > 0" (ngSubmit)="submitForm()" [formGroup]="userForm">
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label">Full name</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text"
+                           name="fullname"
+                           placeholder="FullName (required)"
+                           formControlName="fullName"
+                           [ngClass]="{'is-invalid': (userForm.get('fullName')?.touched ||
+                                            userForm.get('fullName')?.dirty) &&
+                                            !userForm.get('fullName')?.valid }">
+                    <span class="invalid-feedback">
+                <span *ngIf="userForm.get('fullName')?.errors?.required"> Please enter your fullName</span>
+                <span *ngIf="userForm.get('fullName')?.errors?.minlength">
+                    the full name must be longer than 3 characters.
+                </span>
+            </span>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label">Address</label>
+                <div class="col-md-8">
+                    <input class="form-control"
+                           type="text" name="address"
+                           placeholder="(minimum 6 characters)"
+                           formControlName="address"
+                           [ngClass]="{'is-invalid': (userForm.get('address')?.touched ||
+                                            userForm.get('address')?.dirty) &&
+                                            !userForm.get('address')?.valid }">
+                    <span class="invalid-feedback">
+                <span *ngIf="userForm.get('address')?.errors?.required"> Please enter your Address</span>
+                <span *ngIf="userForm.get('address')?.errors?.minlength">
+                    the address must be longer than 6 characters.
+                </span>
+            </span>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label">Credit card number</label>
+                <div class="col-md-8">
+                    <input class="form-control"
+                           type="text" name="address"
+                           placeholder="(16-digit-number)"
+                           formControlName="creditcard"
+                           [ngClass]="{'is-invalid': (userForm.get('creditcard')?.touched ||
+                                            userForm.get('creditcard')?.dirty) &&
+                                            !userForm.get('creditcard')?.valid }">
+                    <span class="invalid-feedback">
+                <span *ngIf="userForm.get('creditcard')?.errors?.required"> Please enter your creditCard 16 digit number</span>
+                <span *ngIf="userForm.get('creditcard')?.errors?.minlength">
+                    the card number must be 16 digit long.
+                </span>
+            </span>
+                </div>
+            </div>
+            <button [disabled]="userForm.invalid" type="submit">Submit</button>
+            <button type="button" class="btn-outline-secondary " (click)="testData()">testData</button>
+        </form>
+    </div>
+</div>

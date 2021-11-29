@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div >
+        <h1 >Success</h1>
+        <p> Thank you, {{fullname}} for your order!
+            <br>
+            Your order total is {{total | currency: 'USD' : 'symbol'}} and your order is confirmed!
+            <br>
+            Please allow 1-3 business day(s) for shipping.
+        </p>
+        <a routerLink="/products">Return to Product List</a>
+    </div>
+</div>
