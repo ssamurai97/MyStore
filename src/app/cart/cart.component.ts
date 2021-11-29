@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
 
   testData(){
     this.userForm.patchValue({
-      fullName: 'Deng',
+      fullName: 'Deng Mach',
       address: '123  23th ave N',
       creditcard: '42424243434343434343'
     })
